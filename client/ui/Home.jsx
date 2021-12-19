@@ -1,11 +1,14 @@
 import React from 'react';
+import { AppointmentForm } from './AppointmentForm';
 import { Logout } from './Logout';
 
 export const Home = () => {
     return (
         <div>
-            <div>Welcome To Home</div>
-            <Logout/>
+            <header>Welcome To Home</header>
+            <div><Logout/></div>
+            <div><AppointmentForm/></div>
+            
         </div>
     );
 }
