@@ -8,7 +8,7 @@ export const App = () => {
     const user = useTracker(() => getUser());
 
     return (
-        <div className="main">
+        <div className="app">
             {user ? (<Home />) : (<LoginForm />)}
         </div>
     );

@@ -1,4 +1,64 @@
 body {
-  padding: 10px;
   font-family: sans-serif;
+  background-color: #50836f;
+  background-image: linear-gradient(to bottom, #489981, #80a06b 100%);
+  background-attachment: fixed;
+
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+
+  padding: 0;
+  margin: 0;
+
+  font-size: 14px;
+}
+
+.app {
+  display: block;
+  flex-direction: row;
+  height: 100vh;
+}
+.login-form {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+
+  justify-content: center;
+  align-items: center;
+}
+
+.login-form > div {
+  margin: 8px;
+}
+
+.login-form > div > label {
+  font-weight: bold;
+  font-size: 1.2em;
+}
+
+.login-form > div  > input {
+  flex-grow: 1;
+  box-sizing: border-box;
+  padding: 10px 6px;
+  background: transparent;
+  border: 1px solid #aaa;
+  width: 100%;
+  font-size: 1em;
+  margin-right: 16px;
+  margin-top: 4px;
+}
+
+.login-form > div > input:focus {
+  outline: 0;
+}
+
+.login-form > div > button {
+  background-color: #62807e;
+  width: 100%;
+  padding: 10px 6px;
+  margin-right: 16px;
+  margin-top: 4px;
 }

@@ -1,47 +1,51 @@
-import React, { useState } from "react";
-import { createAppointment } from "../../server/db/appointments";
+import React, { useState } from 'react';
+import { createAppointment } from '../db/appointments';
 
 export const AppointmentForm = () => {
     const [date, setDate] = useState('');
     const [firstName, setFirstName] = useState('');
-    const [lastName, setlastName] = useState('');
+    const [lastName, setLastName] = useState('');
 
     const onDateChange = (event) => {
         event.preventDefault();
-        setDate(event.target.value);
+        setDate(event.target.value.trim());
     }
 
     const onFirstNameChange = (event) => {
         event.preventDefault();
-        setFirstName(event.target.value);
+        setFirstName(event.target.value.trim());
     }
 
     const onLastNameChange = (event) => {
         event.preventDefault();
-        setlastName(event.target.value);
+        setLastName(event.target.value.trim());
     }
 
     const onAppointmentFormSubmit = () => {
-        createAppointment(date, firstName, lastName);
+        createAppointment(new Date(date), firstName, lastName);
     }
 
+    const cancel = () => {
+        setDate("");
+        setFirstName("");
+        setLastName("");
+    }
 
     return (
-        <form className="AppointmentForm" onClick={onAppointmentFormSubmit}>
+        <form className="AppointmentForm" onSubmit={onAppointmentFormSubmit}>
+            <h2>Create Appointment</h2>
             <div>
-                {/* <label htmlFor="date">Date:</label> */}
-                <input name="date" type="text" placeholder="DD/MM/YYYY" value={date} onChange={onDateChange}></input>
+                <input name="date" type="text" placeholder="YYYY-mm-dd" value={date} onChange={onDateChange} required></input>
             </div>
             <div>
-                {/* <label htmlFor="firstname">First Name:</label> */}
-                <input name="firstname" type="text" placeholder="First Name" value={firstName} onChange={onFirstNameChange}></input>
+                <input name="firstname" type="text" placeholder="First Name" value={firstName} onChange={onFirstNameChange} required></input>
             </div>
             <div>
-                {/* <label htmlFor="lastname">Last Name:</label> */}
-                <input name="lastname" type="text" placeholder="Last Name" value={lastName} onChange={onLastNameChange}></input>
+                <input name="lastname" type="text" placeholder="Last Name" value={lastName} onChange={onLastNameChange} required></input>
             </div>
             <div>
-                <button type="submit">Create Appointment</button>
+                <button type="submit">Save</button>
+                <button type="button" onClick="cancel">Cancel</button>
             </div>
         </form>
 

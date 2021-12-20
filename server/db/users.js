@@ -8,6 +8,7 @@ const doesUserExist = (username) => {
     return getUser(username);
 }
 
+
 export const findUserId = (username) => {
     return getUser(username)._id;
 }

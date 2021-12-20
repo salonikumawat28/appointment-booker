@@ -1,6 +1,7 @@
 import  {user1, user2, firstNames, lastNames} from '../constants';
 import { createUser, findUserId } from './users';
 import { createAppointment, hasAppointments } from './appointments';
+import { getRandom, getRandomDate } from '../utils';
 
 const createTestUsers = () => {
    createUser(user1.username, user1.password);
@@ -11,7 +12,7 @@ const createAppointments = (userId, count) => {
     for(let i = 0; i < count; i++) {
         let firstName = getRandom(firstNames);
         let lastName = getRandom(lastNames);
-        let date = getRandomDate(new Date(), new Date('31.01.2022'));
+        let date = getRandomDate(new Date(), new Date('2022-01-31'));
         createAppointment(userId, firstName, lastName, date);
     }
 }

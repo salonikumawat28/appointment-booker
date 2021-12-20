@@ -10,5 +10,9 @@ export const createAppointment = (userId, firstName, lastName, date) => {
 }
 
 export const hasAppointments = () => {
-    return AppointmentsCollection.find({}).count !== 0;
+    return AppointmentsCollection.find({}).count() !== 0;
+}
+
+export const getAppointments = (userId) => {
+    return AppointmentsCollection.find({userId: userId});
 }
