@@ -45,7 +45,7 @@ export const AppointmentForm = () => {
             </div>
             <div>
                 <button type="submit">Save</button>
-                <button type="button" onClick="cancel">Cancel</button>
+                <button type="button" onClick={cancel}>Cancel</button>
             </div>
         </form>
 
