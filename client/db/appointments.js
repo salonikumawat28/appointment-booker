@@ -6,9 +6,18 @@ export const createAppointment = (date, firstName, lastName) => {
     Meteor.call('insertAppointment', date, firstName, lastName);
 }
 
-export const filterSpecifier = {
-    userId: getUserId(),
-};
+
+const filterSpecifier = (filter) => {
+    if (!filter) return { userId: getUserId() };
+
+    const nameFilter = '^' + filter + '.*';
+    const filterByFirstName =  { firstName: { $regex: nameFilter } };
+    const filterByLastName =  { lastName: { $regex: nameFilter } };
+    return {
+        userId: getUserId(),
+        $or: [ filterByFirstName, filterByLastName, ],
+    };
+}
 
 export const sortSpecifier = {
     sort: {
@@ -16,10 +25,26 @@ export const sortSpecifier = {
     }
 };
 
-export const getAppointments = () => {
+export const getAppointmentById = (appointmentId) => {
+    return AppointmentsCollection.findOne({
+        _id: appointmentId
+    });
+}
+
+export const editAppointment = (appointmentId, date, firstName, lastName) => {
+    Meteor.call('editAppointment', appointmentId, date, firstName, lastName);
+}
+
+export const getAppointments = (filterByName) => {
     let handler = Meteor.subscribe('appointments');
     if (!handler.ready()) {
-        return [];
+        return {
+            isLoading: true,
+            appointments: []
+        }
     }
-    return AppointmentsCollection.find(filterSpecifier, sortSpecifier).fetch();
+    return {
+        isLoading: false,
+        appointments: AppointmentsCollection.find(filterSpecifier(filterByName), sortSpecifier).fetch()
+    }
 }
