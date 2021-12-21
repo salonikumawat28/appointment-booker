@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { createAppointment, getAppointmentById, editAppointment } from '../db/appointments';
 import { Session } from 'meteor/session';
 import { useTracker } from 'meteor/react-meteor-data';
+import {getDateString} from '../utils'
 
 export const AppointmentForm = () => {
     const appointmentId = useTracker(() => Session.get('appointmentIdToEdit'));
@@ -17,7 +18,7 @@ export const AppointmentForm = () => {
         } else {
             const appointment = getAppointmentById(appointmentId);
             if (!appointment) return;
-            setDate(appointment.date.toString());
+            setDate(getDateString(appointment.date));
             setFirstName(appointment.firstName);
             setLastName(appointment.lastName);
         }
