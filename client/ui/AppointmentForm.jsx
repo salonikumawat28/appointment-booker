@@ -52,7 +52,7 @@ export const AppointmentForm = () => {
     }
 
     return (
-        <form className="AppointmentForm" onSubmit={onAppointmentFormSubmit}>
+        <form className="appointment-form" onSubmit={onAppointmentFormSubmit}>
             <h2>{ appointmentId ? 'Edit Appointment' : 'Create Appointment'}</h2>
             <div>
                 <input name="date" type="text" placeholder="YYYY-mm-dd" value={date} onChange={onDateChange} required></input>

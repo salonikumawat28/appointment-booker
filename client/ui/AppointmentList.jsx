@@ -17,10 +17,10 @@ export const AppointmentList = () => {
         <div>
             {isLoading ? (<Loading/>) : (
                 <div>
-                    <div>
-                        <input type="text" placeholder="Filter By Name" value={filterByName} onChange={onFilterByNameChange}></input>
+                    <div className="filter">
+                        <input type="text" placeholder="Filter By Name" value={filterByName} onChange={onFilterByNameChange} />
                     </div>
-                    <ul>
+                    <ul className="appointments">
                         {appointments.map((appointment) => <Appointment key={appointment._id} data={appointment}/>)}
                     </ul>
                 </div>

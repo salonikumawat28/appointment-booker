@@ -6,12 +6,22 @@ export const Appointment = ({data}) => {
         Session.set('appointmentIdToEdit', data._id);
     }
 
+    const getDateString = (date) => {
+        return '' + date.getFullYear() + '-' + date.getMonth() + '-' + date.getDate();
+    }
+
     return (
         <li>
-            <div>First name: {data.firstName}</div>
-            <div>Last name: {data.lastName}</div>
-            <div>Date: {data.date.toString()}</div>
-            <button type="button" onClick={editAppointment}>Edit</button>
+            <div class="row">
+                <div class="column left">
+                    <div>{data.firstName} {data.lastName}</div>
+                    <div>Date: {getDateString(data.date)}</div>
+                </div>
+                <div class="column right">
+                    <button type="button" onClick={editAppointment}>Edit</button>
+                </div>
+            </div>
+
         </li>
 
     );

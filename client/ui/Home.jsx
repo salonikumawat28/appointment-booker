@@ -5,12 +5,15 @@ import { AppointmentList } from './AppointmentList';
 
 export const Home = () => {
     return (
-        <div>
-            <h1>Appointment Booker</h1>
-            <div><Logout/></div>
-            <div><AppointmentForm/></div>
-            <div><AppointmentList/></div>
-            
+        <div className="main">
+            <div className="row">
+                <div className="column left">
+                    <AppointmentForm/>
+                </div>
+                <div className="column right">
+                    <AppointmentList/>
+                </div>
+            </div>
         </div>
     );
 }
