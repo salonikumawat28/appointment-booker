@@ -8,9 +8,6 @@ const validateInputs = (date, firstName, lastName) => {
     check(lastName, String);
 }
 
-// const checkUserAuthentication = function() {
-//     if(!this.userId) throw new Meteor.Error("User should be logged in to perform this operation");
-// }
 
 Meteor.methods({
     insertAppointment: function(date, firstName, lastName) {
@@ -18,6 +15,7 @@ Meteor.methods({
         if(!this.userId) throw new Meteor.Error("User should be logged in to perform this operation");
         createAppointment(this.userId, firstName, lastName, date);
     },
+
     editAppointment: function(appointmentId, date, firstName, lastName) {
         console.log('step 1');
         check(appointmentId, String);
